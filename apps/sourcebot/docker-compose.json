@@ -148,7 +148,21 @@
       "command": [
         "sh",
         "-c",
-        "if [ ! -f /data/config.json ]; then printf '%s\n' '{\"$schema\":\"https://raw.githubusercontent.com/sourcebot-dev/sourcebot/main/schemas/v3/index.json\",\"connections\":{\"starter-connection\":{\"type\":\"github\",\"repos\":[\"9kit-com/swemk\"]}}}' > /data/config.json; fi && chown -R 1500:1500 /data"
+        "if [ ! -f /data/config.json ]; then JSON='{\"$schema\":\"https://raw.githubusercontent.com/sourcebot-dev/sourcebot/main/schemas/v3/index.json\",\"connections\":{\"starter-connection\":{\"type\":\"github\",\"repos\":[\"9kit-com/swemk\"]'; [ -n \"$GITHUB_TOKEN\" ] && JSON=\"$JSON,\\\"token\\\":{\\\"env\\\":\\\"GITHUB_TOKEN\\\"}\"; JSON=\"$JSON}}}\"; [ -n \"$GITHUB_APP_ID\" ] && [ -n \"$GITHUB_APP_PRIVATE_KEY\" ] && JSON=\"${JSON%?},\\\"apps\\\":[{\\\"type\\\":\\\"github\\\",\\\"id\\\":\\\"$GITHUB_APP_ID\\\",\\\"privateKey\\\":{\\\"env\\\":\\\"GITHUB_APP_PRIVATE_KEY\\\"}}]}\"; echo \"$JSON\" > /data/config.json; fi && chown -R 1500:1500 /data"
+      ],
+      "environment": [
+        {
+          "key": "GITHUB_TOKEN",
+          "value": "${GITHUB_TOKEN}"
+        },
+        {
+          "key": "GITHUB_APP_ID",
+          "value": "${GITHUB_APP_ID}"
+        },
+        {
+          "key": "GITHUB_APP_PRIVATE_KEY",
+          "value": "${GITHUB_APP_PRIVATE_KEY}"
+        }
       ],
       "volumes": [
         {
