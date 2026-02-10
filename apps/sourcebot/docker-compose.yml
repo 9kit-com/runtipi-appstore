@@ -71,7 +71,7 @@ services:
       - -c
       - >-
         if [ ! -f /data/config.json ]; then
-          JSON='{"connections":{"starter-connection":{"type":"github","repos":["9kit-com/swemk"]';
+          JSON='{"connections":{"starter-connection":{"type":"github","repos":["9kit/swemk"]';
           [ -n "$$GITHUB_TOKEN" ] && JSON="$$JSON"',''"token":{"env":"GITHUB_TOKEN"}';
           JSON="$$JSON"'}}}';
           [ -n "$$GITHUB_APP_ID" ] && [ -n "$$GITHUB_APP_PRIVATE_KEY" ] && JSON="$${JSON%?}"', "apps": [{"type": "github", "id": "'$$GITHUB_APP_ID'", "privateKey": {"env": "GITHUB_APP_PRIVATE_KEY"}}]}';
