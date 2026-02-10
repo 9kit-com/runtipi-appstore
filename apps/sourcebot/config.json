@@ -79,7 +79,9 @@
       "type": "password",
       "description": "Optional: Required for GitHub App connection. Paste the full private key including BEGIN/END lines.",
       "hint": "Optional. The private key of your GitHub App.",
-      "placeholder": "-----BEGIN RSA PRIVATE KEY-----..."
+      "placeholder": "-----BEGIN RSA PRIVATE KEY-----...",
+      "min": 0,
+      "max": 10000
     }
   ],
   "supported_architectures": ["amd64", "arm64"],
