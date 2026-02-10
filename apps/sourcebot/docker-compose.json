@@ -84,11 +84,11 @@
       "securityOpt": ["no-new-privileges:true"]
       ,
       "healthCheck": {
-        "test": "wget --no-verbose --tries=1 --spider http://127.0.0.1:3000",
-        "interval": "10s",
-        "timeout": "5s",
-        "retries": 5,
-        "startPeriod": "30s"
+        "test": "curl -f http://127.0.0.1:3000 || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "60s"
       }
     },
     {
