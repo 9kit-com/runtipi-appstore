@@ -1,0 +1,80 @@
+version: "3.7"
+services:
+  sourcebot:
+    image: ghcr.io/sourcebot-dev/sourcebot:v4.10.28
+    container_name: sourcebot
+    restart: unless-stopped
+    user: "1500:1500"
+    ports:
+      - ${APP_PORT}:3000
+    volumes:
+      - ${APP_DATA_DIR}/data/app:/data
+    environment:
+      - CONFIG_PATH=/data/config.json
+      - AUTH_URL=${APP_PROTOCOL:-http}://${APP_DOMAIN:-localhost}
+      - AUTH_SECRET=${AUTH_SECRET}
+      - SOURCEBOT_ENCRYPTION_KEY=${SOURCEBOT_ENCRYPTION_KEY}
+      - DATABASE_URL=postgresql://sourcebot:${SOURCEBOT_POSTGRES_PASSWORD}@sourcebot-postgres:5432/sourcebot
+      - REDIS_URL=redis://sourcebot-redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    depends_on:
+      sourcebot-postgres:
+        condition: service_healthy
+      sourcebot-redis:
+        condition: service_healthy
+      sourcebot-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  sourcebot-postgres:
+    image: postgres:16-alpine
+    container_name: sourcebot-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sourcebot
+      POSTGRES_PASSWORD: ${SOURCEBOT_POSTGRES_PASSWORD}
+      POSTGRES_DB: sourcebot
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sourcebot"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+  sourcebot-redis:
+    image: redis:7-alpine
+    container_name: sourcebot-redis
+    restart: unless-stopped
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 10s
+      retries: 10
+
+  sourcebot-init:
+    image: alpine:3.19
+    container_name: sourcebot-init
+    command:
+      - sh
+      - -c
+      - >-
+        if [ ! -f /data/config.json ]; then printf '%s
+        ' '{"$schema":"https://raw.githubusercontent.com/sourcebot-dev/sourcebot/main/schemas/v3/index.json","connections":{"starter-connection":{"type":"github","repos":["sourcebot-dev/sourcebot"]}}}' > /data/config.json; fi && chown -R 1500:1500 /data
+    volumes:
+      - ${APP_DATA_DIR}/data/app:/data
+    restart: "no"
+    logging:
+      driver: json-file
+      options:
+        max-size: 10mb
+        max-file: "1"
+  # This file is for local development only. RunTipi uses docker-compose.json.
