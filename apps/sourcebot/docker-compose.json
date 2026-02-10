@@ -148,7 +148,7 @@
       "command": [
         "sh",
         "-c",
-        "if [ ! -f /data/config.json ]; then JSON='{\"connections\":{\"starter-connection\":{\"type\":\"github\",\"repos\":[\"9kit-com/Swemk\"]'; [ -n \"$$GITHUB_TOKEN\" ] && JSON=\"$$JSON,\\\"token\\\":{\\\"env\\\":\\\"GITHUB_TOKEN\\\"}\"; JSON=\"$$JSON}}}\"; [ -n \"$$GITHUB_APP_ID\" ] && [ -n \"$$GITHUB_APP_PRIVATE_KEY\" ] && JSON=\"$${JSON%?},\\\"apps\\\":[{\\\"type\\\":\\\"github\\\",\\\"id\\\":\\\"$$GITHUB_APP_ID\\\",\\\"privateKey\\\":{\\\"env\\\":\\\"GITHUB_APP_PRIVATE_KEY\\\"}}]}\"; echo \"$$JSON\" > /data/config.json; fi && chown -R 1500:1500 /data"
+        "if [ ! -f /data/config.json ]; then JSON='{\"connections\":{\"starter-connection\":{\"type\":\"github\",\"orgs\":[\"9kit-com\"]'; [ -n \"$$GITHUB_TOKEN\" ] && JSON=\"$$JSON,\\\"token\\\":{\\\"env\\\":\\\"GITHUB_TOKEN\\\"}\"; JSON=\"$$JSON}}}\"; [ -n \"$$GITHUB_APP_ID\" ] && [ -n \"$$GITHUB_APP_PRIVATE_KEY\" ] && JSON=\"$${JSON%?},\\\"apps\\\":[{\\\"type\\\":\\\"github\\\",\\\"id\\\":\\\"$$GITHUB_APP_ID\\\",\\\"privateKey\\\":{\\\"env\\\":\\\"GITHUB_APP_PRIVATE_KEY\\\"}}]}\"; echo \"$$JSON\" > /data/config.json; fi && chown -R 1500:1500 /data"
       ],
       "environment": [
         {
