@@ -41,6 +41,18 @@
         {
           "key": "ANTHROPIC_API_KEY",
           "value": "${ANTHROPIC_API_KEY}"
+        },
+        {
+          "key": "GITHUB_TOKEN",
+          "value": "${GITHUB_TOKEN}"
+        },
+        {
+          "key": "GITHUB_APP_ID",
+          "value": "${GITHUB_APP_ID}"
+        },
+        {
+          "key": "GITHUB_APP_PRIVATE_KEY",
+          "value": "${GITHUB_APP_PRIVATE_KEY}"
         }
       ],
       "volumes": [

@@ -56,6 +56,30 @@
       "description": "Optional: Used for Sourcebot's AI features",
       "hint": "Optional. Enables AI features in Sourcebot.",
       "placeholder": "paste-your-anthropic-key"
+    },
+    {
+      "env_variable": "GITHUB_TOKEN",
+      "label": "GitHub Token",
+      "type": "password",
+      "description": "Optional: Required for Sourcebot to access private repositories or avoid rate limits",
+      "hint": "Optional. Enables GitHub integration.",
+      "placeholder": "ghp_xxxxxxxxxxxx"
+    },
+    {
+      "env_variable": "GITHUB_APP_ID",
+      "label": "GitHub App ID",
+      "type": "text",
+      "description": "Optional: Required for GitHub App connection",
+      "hint": "Optional. The ID of your GitHub App.",
+      "placeholder": "123456"
+    },
+    {
+      "env_variable": "GITHUB_APP_PRIVATE_KEY",
+      "label": "GitHub App Private Key",
+      "type": "password",
+      "description": "Optional: Required for GitHub App connection. Paste the full private key including BEGIN/END lines.",
+      "hint": "Optional. The private key of your GitHub App.",
+      "placeholder": "-----BEGIN RSA PRIVATE KEY-----..."
     }
   ],
   "supported_architectures": ["amd64", "arm64"],
