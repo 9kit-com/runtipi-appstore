@@ -15,7 +15,7 @@ Your files are stored in `/app` inside the container and survive restarts.
 
 ## Access
 
-Open the web UI and edit `/app/app.py` in the browser.
+Open the web UI and enter the configured password to edit `/app/app.py` in the browser.
 
 The container exposes marimo on port `8080` and includes a health check against `/health`.
 
