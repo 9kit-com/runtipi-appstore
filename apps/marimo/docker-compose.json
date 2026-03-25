@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "marimo",
+      "image": "ghcr.io/marimo-team/marimo:0.21.1-sql",
+      "isMain": true,
+      "internalPort": 8080,
+      "command": [
+        "marimo",
+        "edit",
+        "/app/app.py",
+        "--no-token",
+        "--host",
+        "0.0.0.0",
+        "-p",
+        "8080"
+      ],
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app"
+        }
+      ],
+      "dependsOn": {
+        "marimo-init": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "healthCheck": {
+        "test": "python -c \"import sys, urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health'); sys.exit(0)\"",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "30s"
+      },
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10mb",
+          "max-file": "1"
+        }
+      },
+      "securityOpt": ["no-new-privileges:true"]
+    },
+    {
+      "name": "marimo-init",
+      "image": "alpine:3.21",
+      "command": [
+        "sh",
+        "-c",
+        "mkdir -p /data && if [ ! -f /data/requirements.txt ]; then cat <<'EOF' > /data/requirements.txt\nmarimo[recommended]\nEOF\nfi && if [ ! -f /data/app.py ]; then cat <<'EOF' > /data/app.py\nimport marimo\n\napp = marimo.App()\n\n\n@app.cell\ndef __():\n    import marimo as mo\n    return (mo,)\n\n\n@app.cell\ndef __(mo):\n    mo.md(\n        \"\"\"\n        # Welcome to marimo\n\n        This starter notebook lives in `/app/app.py`.\n\n        Edit it in the browser, then use `marimo run app.py` when you want to serve it as an app.\n        \"\"\"\n    )\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\nEOF\nfi && chown -R 1000:1000 /data"
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/data"
+        }
+      ],
+      "restart": "no"
+    }
+  ]
+}

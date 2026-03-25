@@ -1,0 +1,20 @@
+{
+  "name": "Marimo",
+  "id": "marimo",
+  "available": true,
+  "dynamic_config": false,
+  "created_at": 1774474633000,
+  "updated_at": 1774474633000,
+  "short_desc": "Reactive Python notebooks and apps in a self-hosted web editor.",
+  "author": "marimo-team",
+  "port": 8080,
+  "categories": ["development", "utilities", "data"],
+  "description": "marimo is a reactive Python notebook stored as pure Python. This app starts a persistent marimo workspace in your browser so you can create, edit, and run notebooks from Docker.",
+  "tipi_version": 2,
+  "version": "0.21.1-sql",
+  "source": "https://github.com/marimo-team/marimo",
+  "website": "https://docs.marimo.io/",
+  "exposable": true,
+  "form_fields": [],
+  "supported_architectures": ["amd64", "arm64"]
+}
