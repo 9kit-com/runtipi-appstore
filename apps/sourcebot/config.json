@@ -4,15 +4,19 @@
   "available": true,
   "dynamic_config": false,
   "created_at": 1739266779000,
-  "updated_at": 1739266779000,
+  "updated_at": 1774494586409,
   "short_desc": "Self-hosted tool that helps developers and agents understand your codebase.",
   "author": "https://sourcebot.dev",
   "port": 3000,
-  "categories": ["development", "utilities", "ai"],
+  "categories": [
+    "development",
+    "utilities",
+    "ai"
+  ],
   "description": "Sourcebot is a self-hosted tool that helps you understand your codebase. Ask Sourcebot: Ask questions about your codebase and have Sourcebot provide detailed answers grounded with inline citations. Code search: Search and navigate across all your repos and branches, no matter where they're hosted.",
-  "tipi_version": 2,
+  "tipi_version": 3,
   "min_tipi_version": "4.5.0",
-  "version": "v4.10.28",
+  "version": "3.23",
   "uid": 1500,
   "gid": 1500,
   "source": "https://github.com/sourcebot-dev/sourcebot",
@@ -84,6 +88,9 @@
       "max": 10000
     }
   ],
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "$schema": "../app-info-schema.json"
 }
