@@ -355,6 +355,7 @@
     {
       "name": "harbor-portal",
       "image": "goharbor/harbor-portal:v2.15.0",
+      "user": "root",
       "dependsOn": {
         "harbor-init": {
           "condition": "service_completed_successfully"
