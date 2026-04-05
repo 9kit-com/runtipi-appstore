@@ -1,0 +1,62 @@
+{
+  "name": "Harbor",
+  "id": "harbor",
+  "available": true,
+  "short_desc": "Open source trusted cloud native registry for storing, signing, and scanning container images.",
+  "author": "goharbor",
+  "port": 8182,
+  "categories": ["development", "utilities"],
+  "description": "Harbor is an open source trusted cloud native registry project that stores, signs, and scans content. Harbor extends the open source Docker Distribution by adding the functionalities usually required by users such as security, identity and management. Having a registry closer to the build and run environment can improve the image transfer efficiency. Harbor supports replication of images between registries, and also offers advanced security features such as user management, access control and activity auditing.",
+  "tipi_version": 1,
+  "version": "v2.15.0",
+  "source": "https://github.com/goharbor/harbor",
+  "website": "https://goharbor.io",
+  "exposable": true,
+  "supported_architectures": ["amd64"],
+  "created_at": 1743869129000,
+  "updated_at": 1743869129000,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "env_variable": "HARBOR_ADMIN_PASSWORD",
+      "label": "Admin Password",
+      "type": "password",
+      "description": "Password for the Harbor admin user. Login with username 'admin'.",
+      "hint": "Set a strong password for the admin account.",
+      "placeholder": "StrongPassword123",
+      "min": 8
+    },
+    {
+      "env_variable": "HARBOR_DB_PASSWORD",
+      "label": "Database Password",
+      "type": "random",
+      "min": 32
+    },
+    {
+      "env_variable": "HARBOR_SECRET_KEY",
+      "label": "Secret Key",
+      "type": "random",
+      "min": 32,
+      "max": 32
+    },
+    {
+      "env_variable": "HARBOR_CORE_SECRET",
+      "label": "Core Secret",
+      "type": "random",
+      "min": 32
+    },
+    {
+      "env_variable": "HARBOR_JOBSERVICE_SECRET",
+      "label": "Jobservice Secret",
+      "type": "random",
+      "min": 32
+    },
+    {
+      "env_variable": "HARBOR_REGISTRY_PASSWORD",
+      "label": "Registry Internal Password",
+      "type": "random",
+      "min": 32
+    }
+  ],
+  "$schema": "../app-info-schema.json"
+}
