@@ -284,10 +284,6 @@
           "value": "false"
         },
         {
-          "key": "RELOAD_KEY",
-          "value": ""
-        },
-        {
           "key": "REGISTRY_CONTROLLER_URL",
           "value": "http://harbor-registryctl:8080"
         },
@@ -322,14 +318,6 @@
         {
           "key": "LOG_LEVEL",
           "value": "info"
-        },
-        {
-          "key": "HTTP_PROXY",
-          "value": ""
-        },
-        {
-          "key": "HTTPS_PROXY",
-          "value": ""
         },
         {
           "key": "NO_PROXY",
@@ -428,14 +416,6 @@
         {
           "key": "LOG_LEVEL",
           "value": "info"
-        },
-        {
-          "key": "HTTP_PROXY",
-          "value": ""
-        },
-        {
-          "key": "HTTPS_PROXY",
-          "value": ""
         },
         {
           "key": "NO_PROXY",
