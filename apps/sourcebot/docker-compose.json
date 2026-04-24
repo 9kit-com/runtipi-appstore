@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "sourcebot",
-      "image": "ghcr.io/sourcebot-dev/sourcebot:v4.10.28",
+      "image": "ghcr.io/sourcebot-dev/sourcebot:v4.16.15",
       "isMain": true,
       "internalPort": 3000,
       "environment": [
