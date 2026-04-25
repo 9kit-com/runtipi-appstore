@@ -3,7 +3,7 @@
   "services": [
     {
       "name": "marimo",
-      "image": "ghcr.io/marimo-team/marimo:0.21.1-sql",
+      "image": "ghcr.io/marimo-team/marimo:0.23.3-sql",
       "isMain": true,
       "internalPort": 8080,
       "command": [
