@@ -120,7 +120,7 @@
     },
     {
       "name": "harbor-registryctl",
-      "image": "goharbor/harbor-registryctl:v2.15.0",
+      "image": "goharbor/harbor-registryctl:v2.15.2",
       "environment": [
         {
           "key": "CORE_SECRET",
