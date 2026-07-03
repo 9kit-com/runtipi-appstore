@@ -370,7 +370,7 @@
     },
     {
       "name": "harbor-jobservice",
-      "image": "goharbor/harbor-jobservice:v2.15.0",
+      "image": "goharbor/harbor-jobservice:v2.15.2",
       "environment": [
         {
           "key": "CORE_SECRET",
