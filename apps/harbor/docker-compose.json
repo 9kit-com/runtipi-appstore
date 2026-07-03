@@ -354,7 +354,7 @@
     },
     {
       "name": "harbor-portal",
-      "image": "goharbor/harbor-portal:v2.15.0",
+      "image": "goharbor/harbor-portal:v2.15.2",
       "user": "root",
       "dependsOn": {
         "harbor-init": {
