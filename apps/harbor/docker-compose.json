@@ -54,7 +54,7 @@
     },
     {
       "name": "harbor-db",
-      "image": "goharbor/harbor-db:v2.15.0",
+      "image": "goharbor/harbor-db:v2.15.2",
       "environment": [
         {
           "key": "POSTGRES_PASSWORD",
