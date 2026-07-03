@@ -439,7 +439,7 @@
     },
     {
       "name": "harbor",
-      "image": "goharbor/nginx-photon:v2.15.0",
+      "image": "goharbor/nginx-photon:v2.15.2",
       "isMain": true,
       "internalPort": "8080",
       "volumes": [
