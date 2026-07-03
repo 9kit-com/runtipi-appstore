@@ -157,7 +157,7 @@
     },
     {
       "name": "harbor-core",
-      "image": "goharbor/harbor-core:v2.15.0",
+      "image": "goharbor/harbor-core:v2.15.2",
       "environment": [
         {
           "key": "_REDIS_URL_CORE",
